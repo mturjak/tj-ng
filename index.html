@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="en-US" ng-app>
+<html class="no-js" lang="en-US" ng-app="app" ng-controller="AppCtrl as appCtrl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>My App</title>
+        <title>{{appCtrl.appName}}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,12 +16,44 @@
         <!-- we load js scripts here to have angular ready before loading the body html -->
         <script src="app/js/jquery.min.js"></script>
         <script src="app/js/angular.min.js"></script>
+        <script src="app/js/ui-bootstrap.min.js"></script>
         <script src="app/js/app.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <p>Hello world! This is my <strong>{{ 'AngularJS' }}</strong> web app.</p>
+        <header class="navbar navbar-default" ng-controller="NavBarCtrl">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" ng-click="doCollapse()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">{{appCtrl.appName}}</a>
+            </div>
+            <nav class="collapse navbar-collapse" collapse="!isCollapsed">
+              <ul class="nav navbar-nav">
+                <li ng-class="isActive('')"><a href="#" ng-click="doCollapse()">Home</a></li>
+                <li ng-class="isActive('/about')"><a href="#about" ng-click="doCollapse()">About</a></li>
+                <li ng-class="isActive('/contact')"><a href="#contact" ng-click="doCollapse()">Contact</a></li>
+                <li class="dropdown" dropdown>
+                  <a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" ng-click="doCollapse()">Action</a></li>
+                    <li><a href="#" ng-click="doCollapse()">Another action</a></li>
+                    <li><a href="#" ng-click="doCollapse()">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#" ng-click="doCollapse()">Separated link</a></li>
+                    <li><a href="#" ng-click="doCollapse()">One more separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav><!--/.nav-collapse -->
+          </div>
+        </header>
     </body>
 </html>

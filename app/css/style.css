@@ -1,1 +1,4 @@
 /* main style sheet for the app */
+.collapsing li {
+	width: 100%;
+}
